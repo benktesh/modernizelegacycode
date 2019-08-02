@@ -6,7 +6,13 @@ using Newtonsoft.Json;
 
 namespace ModernizeLegacyCode.Manager
 {
-    internal class Manager
+    public interface IManager
+    {
+        string GetResultList(RequestData request, DateTime requestDateTime);
+        void LogCommunication(string jsonRequestData, DateTime requestStart, string jsonData);
+    }
+
+    public class Manager : IManager
     {
         public string GetResultList(RequestData request, DateTime requestDateTime)
         {
