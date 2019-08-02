@@ -1,18 +1,30 @@
 ﻿using System;
+using System.Web.Hosting;
 using System.Web.Http;
+using ModernizeLegacyCode.Manager;
 using ModernizeLegacyCode.Models;
 
 namespace ModernizeLegacyCode.Controllers
 {
     public class ResultController : ApiController
     {
+        private readonly IManager _manager;
+
+        public ResultController()
+        {
+            _manager = new Manager.Manager();
+        }
+
+        public ResultController(IManager manager )
+        {
+            _manager = manager;
+        }
         
         [HttpPost]
         public string GetResults(RequestData requestData)
         {
             DateTime requestDateTime = DateTime.Now;
-            var manager = new Manager.Manager(); //dependency in manager
-            string jsonData = manager.GetResultList(requestData, requestDateTime);
+            string jsonData = _manager.GetResultList(requestData, requestDateTime);
             return jsonData;
         }
 
