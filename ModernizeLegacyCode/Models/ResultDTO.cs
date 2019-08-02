@@ -2,7 +2,7 @@
 
 namespace ModernizeLegacyCode.Models
 {
-    internal class ResultDto
+    public class ResultDto
     {
         public string Id { get; set; }
         public string Description { get; set; }

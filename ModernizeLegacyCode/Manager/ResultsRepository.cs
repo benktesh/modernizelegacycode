@@ -5,7 +5,13 @@ using ModernizeLegacyCode.Models;
 
 namespace ModernizeLegacyCode.Manager
 {
-    internal class ResultsRepository : IDisposable
+    public interface IResultsRepository: IDisposable
+    {
+        List<ResultDto> GetResults(string account, string baseName, bool type);
+        
+    }
+
+    public class ResultsRepository : IResultsRepository
     {
         private readonly List<ResultDto> _results = new List<ResultDto>
         {
@@ -47,7 +53,7 @@ namespace ModernizeLegacyCode.Manager
 
         public void Dispose()
         {
-            GC.Collect();
+           
         }
     }
 }
