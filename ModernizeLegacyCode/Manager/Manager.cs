@@ -46,7 +46,7 @@ namespace ModernizeLegacyCode.Manager
                 foreach (ResultDto resultDto in resultsDto)
                 {
                     Result result = new Result();
-                    result.Id = resultDto.Id;
+                    result.AccountNumber = resultDto.AccountNumber;
                     result.Description = resultDto.Description;
                     result.UpdatedDate = resultDto.UpdatedDate.ToString(CultureInfo.InvariantCulture);
                     result.UpdatedBy = resultDto.UpdatedBy;

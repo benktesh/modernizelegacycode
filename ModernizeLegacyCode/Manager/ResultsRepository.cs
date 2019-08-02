@@ -25,7 +25,7 @@ namespace ModernizeLegacyCode.Manager
             },
             new ResultDto
             {
-                AccountNumber = "1",
+                AccountNumber = "2",
                 BaseName = "Y",
                 Cards = new List<Card>
                 {
@@ -33,7 +33,7 @@ namespace ModernizeLegacyCode.Manager
                     new Card {BalanceTransferRate = new Rate()},
                     new Card {BalanceTransferRate = new Rate()},
                 },
-                Description = "1-X",
+                Description = "2-X",
                 Groups = new List<CardGroup>
                 {
                     new CardGroup(),
