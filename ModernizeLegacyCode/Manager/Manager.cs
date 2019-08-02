@@ -14,6 +14,17 @@ namespace ModernizeLegacyCode.Manager
 
     public class Manager : IManager
     {
+        private readonly IResultsRepository _repository;
+
+        public Manager()
+        {
+            _repository = new ResultsRepository();
+        }
+
+        public Manager(IResultsRepository repository)
+        {
+            _repository = repository;
+        }
         public string GetResultList(RequestData request, DateTime requestDateTime)
         {
             string jsonData = string.Empty;
@@ -25,9 +36,9 @@ namespace ModernizeLegacyCode.Manager
                 jsonRequestData = JsonConvert.SerializeObject(request);
 
                 List<ResultDto> resultsDto;
-                using (ResultsRepository resultRepository = new ResultsRepository()) //dependency in repositiry
+                using (_repository) //dependency in repositiry
                 {
-                    resultsDto = resultRepository
+                    resultsDto = _repository
                         .GetResults(request.AccountNumber, request.BaseName, request.IsCard);
                 }
 
@@ -70,7 +81,6 @@ namespace ModernizeLegacyCode.Manager
 
         public void LogCommunication(string jsonRequestData, DateTime requestStart, string jsonData)
         {
-
             LogDTO logDto = new LogDTO();
             logDto.AppName = "AppName";
             logDto.CreatedByUserID = Environment.UserName;
